@@ -1,0 +1,39 @@
+create table pessoa (
+id serial NOT NULL,
+nome varchar(150),
+telefone varchar(150),
+email varchar(150)
+st_ativo boolean,
+PRIMARY KEY (id)
+);
+
+create table endereco (
+id serial NOT NULL,
+nome_rua varchar(150),
+complemento varchar(150),
+bairro varchar(150),
+numero_casa integer, 
+numero_cep varchar(15),
+st_ativo boolean,
+id_pessoa integer NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (id_pessoa) REFERENCES pessoa (id)
+);
+
+create table pet (
+id serial primary key not null,
+nome varchar(150),
+id_dono integer,
+genero varchar(150),
+peso double precision, 
+porte varchar(150),
+status boolean,
+FOREIGN KEY (id_dono) REFERENCES pessoa (id)
+);
+
+create table servico (
+id serial primary key,
+descricao varchar(150),
+valor double precision, 
+status boolean
+);
